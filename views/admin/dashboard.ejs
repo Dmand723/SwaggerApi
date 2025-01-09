@@ -1,0 +1,21 @@
+<div class="admin-title">
+  <h2>Challenges</h2>
+</div>
+<div class="admin-challenges">
+  <a href="/admin/add-challenge" class="btn">+ Add New Challenge</a>
+
+  <ul class="admin-post">
+    <% data.forEach(challenge => { %>
+    <li>
+      <a href="/admin/veiw-challenge/<%= challenge._id %>"
+        >- <%= challenge.title %> &#x1F441;</a
+      >
+      <div class="admin-post-controls">
+        <a href="/admin/edit-challenge/<%= challenge._id %>" class="btn"
+          >Edit</a
+        >
+      </div>
+    </li>
+    <% }); %>
+  </ul>
+</div>

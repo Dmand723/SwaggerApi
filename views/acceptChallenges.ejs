@@ -1,0 +1,22 @@
+<body>
+  <button><a href="/user/<%-username%>">Go Back</a></button>
+  <h1>New Challenges</h1>
+  <div class="challenge-cards">
+    <% challengeArray.forEach(challenge => { %>
+    <div class="challenge-card">
+      <span id="challenge-card-title"><%- challenge.title %></span> <br />
+      <span id="challenge-card-desc"><%- challenge.desc %></span>
+      <form
+        action="addChallenge/<%= challenge.title %>?_method=PUT"
+        method="POST"
+      >
+        <input
+          type="submit"
+          value="Accept Challenge"
+          class="btn add-challenge-btn"
+        />
+      </form>
+    </div>
+    <% }); %>
+  </div>
+</body>

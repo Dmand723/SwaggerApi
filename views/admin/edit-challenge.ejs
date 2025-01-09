@@ -1,0 +1,38 @@
+<a href="/admin/">&larr; Back</a>
+<div class="admin-title">
+  <h2>View / Edit Challenge</h2>
+
+  <form
+    action="/admin/delete-challenge/<%= data._id %>?_method=DELETE"
+    method="POST"
+  >
+    <input type="hidden" name="title" value="<%=data.title%>" />
+    <input type="submit" value="Delete" class="btn-delete btn" />
+  </form>
+</div>
+
+<form action="/admin/edit-challenge/<%= data._id %>?_method=PUT" method="POST">
+  <label for="title"><b>Title</b></label>
+  <input
+    type="text"
+    name="title"
+    placeholder="challenge Title"
+    value="<%= data.title %>"
+  />
+
+  <label for="desc"><b>Desc</b></label>
+  <textarea name="desc" cols="50" rows="10"><%= data.desc %></textarea>
+
+  <label for="category">Category</label>
+  <input type="text" name="category" value="<%= data.category %>" />
+
+  <label for="released">Released</label>
+  <input
+    type="checkbox"
+    name="released"
+    id="edit-challenge-checkbox"
+    released="<%= data.released %>"
+  /><br />
+
+  <input type="submit" value="Update" class="btn" />
+</form>
