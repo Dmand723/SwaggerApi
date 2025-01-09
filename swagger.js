@@ -5,7 +5,7 @@ const doc = {
     title: "My Student API",
     description: "An Api that shows students data.",
   },
-  host: "challengeachements.onrender.com",
+  host: "swaggerapi.onrender.com",
   schemes: ["https"],
 };
 
