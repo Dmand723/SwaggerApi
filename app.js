@@ -39,5 +39,6 @@ app.set("view engine", "ejs");
 app.use("/", require("./server/routes/main"));
 app.use("/admin", require("./server/routes/admin"));
 app.use("/user", require("./server/routes/user"));
+app.use("/swagger", require("./server/routes/swagger"));
 
 app.listen(PORT, () => console.log(`server is running on port: ${PORT}`));
