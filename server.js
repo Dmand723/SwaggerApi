@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const MongoStore = require("connect-mongo");
 const expressLayouts = require("express-ejs-layouts");
 const express = require("express");
@@ -13,6 +14,8 @@ const session = require("express-session");
 const connectDB = require("./server/config/db");
 connectDB();
 const mongodb = require("./server/config/db");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -30,6 +33,15 @@ app.use(
     }),
   })
 );
+
+app
+  .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  .use(cors())
+  .use(express.json())
+  .use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+  });
 
 app.use(expressLayouts);
 app.use(express.static("public"));
